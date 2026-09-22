@@ -15,21 +15,27 @@ while ($true) {
     }
 
     switch ($command) {
-        "whoami" {
-            $output = whoami
-        }
-
-        "hostname" {
-            $output = hostname
-        }
-
-        "ipconfig" {
-            $output = ipconfig | Out-String
-        }
-
-        default {
-            $output = "Command not allowed."
-        }
+    "whoami" {
+        $output = whoami
+    }
+    "hostname" {
+        $output = hostname
+    }
+    "ipconfig" {
+        $output = ipconfig | Out-String
+    }
+    "dir" {
+        $output = dir | Out-String
+    }
+    "pwd" {
+        $output = (Get-Location).Path
+    }
+    "tasklist" {
+        $output = tasklist | Out-String
+    }
+    default {
+        $output = "Command not allowed."
+    }
     }
 
     $writer.WriteLine($output)
